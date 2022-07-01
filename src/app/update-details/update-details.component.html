@@ -1,0 +1,49 @@
+<div class="card">
+    <h4 class="card-header">Details</h4>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="firstName">Date</label>
+                <input type="date" formControlName="firstName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="lastName">Plan</label>
+                <input type="text" formControlName="lastName" class="form-control"  />
+                
+            </div>
+            <div class="form-group">
+                <label for="username">Expires on</label>
+                <input type="text" formControlName="username" class="form-control" />
+               
+            </div>
+            <div class="form-group">
+                <label for="password">Due Date:</label>
+                <input type="password" formControlName="password" class="form-control"  />
+               
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" style="border: solid transparent;
+                border-radius: 16px;
+                border-width: 0 0 4px;
+                box-sizing: border-box;
+                color: #FFFFFF;
+                cursor: pointer;
+                display: inline-block;
+                font-family: din-round,sans-serif;">
+                    Update
+                </button>
+                <button  class="btn btn-primary" (click)="Cancel()" style="margin-left: 10px; background-color: red;
+                border: solid transparent;
+                border-radius: 16px;
+                border-width: 0 0 4px;
+                box-sizing: border-box;
+                color: #FFFFFF;
+                cursor: pointer;
+                display: inline-block;
+                font-family: din-round,sans-serif;">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

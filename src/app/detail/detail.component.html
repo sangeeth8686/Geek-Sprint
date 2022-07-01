@@ -1,0 +1,47 @@
+<div class="p-4">
+    <div class="container">
+        <div class="found" *ngIf="detailsfound">
+        <h1 style=" text-transform: capitalize;">Subscription Details :</h1>
+        <p>date: 12/02/2021</p>
+        <p>plan: Yearly</p>
+        <p>Due Date : 10 Days</p>
+        <p>End Date: 12/02/2021</p>
+        </div>
+        <div class="notFound" *ngIf = "!detailsfound" style="text-align:center; margin-top:200px;">
+            <h1>No Subscription </h1>
+            <h1>details Found</h1>
+        </div>
+    </div>
+    <div class="main" style="margin-top: 100px;">
+        <div style="width: 100px; float:left; height:100px; margin:70px">
+            <button *ngIf="!detailsfound" id="updateDetails" (click)="updateDetails()" class="button"  style=" appearance: button; height: 100px; width: 200px;
+            background-color: #1899D6;
+            border: solid transparent;
+            border-radius: 50px;
+            border-width: 0 0 4px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            font-family:monospace">
+               Update 
+            </button>
+         </div>
+         <div style="width: 100px; float:left; height:100px; margin:70px">
+         <button  *ngIf="!detailsfound" id="buy" class="button" (click)="buyNow()" style=" appearance: button; height: 100px; width: 200px;
+         background-color: yellowgreen;
+         border: solid transparent;
+         border-radius: 50px;
+         border-width: 0 0 4px;
+         box-sizing: border-box;
+         color: #FFFFFF;
+         cursor: pointer;
+         display: inline-block;
+         font-family:monospace">
+            Buy
+         </button>
+         </div>
+</div>
+
+
+
