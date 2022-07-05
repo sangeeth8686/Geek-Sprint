@@ -11,6 +11,7 @@ import { User } from '@app/_models';
 export class AccountService {
     private userSubject: BehaviorSubject<User>;
     public user: Observable<User>;
+    public btnid:string;
 
     constructor(
         private router: Router,
