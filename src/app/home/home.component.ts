@@ -18,8 +18,13 @@ export class HomeComponent {
       //  this.user.firstName.
     }
 
-    Netflix()
+    ngOnInit(): void {
+      this.accountService.btnid=null;
+     }
+
+    onAppClick(event)
     {
+      this.accountService.btnid = event;
         this.router.navigateByUrl('/details');
     }
 }
