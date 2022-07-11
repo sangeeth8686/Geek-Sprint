@@ -1,28 +1,48 @@
-<div class="card">
+<div class="card-update">
     <h4 class="card-header">Details</h4>
-    <div class="card-body">
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="card-body"  style="width: 40%; margin-left: 25%;" >
+                <form [formGroup]="form">
+                    <div class="form-group">
+                        <label for="firstName">Purchase Date</label>
+                        <input type="date" formControlName="purDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.purDate.errors }" />
+                        <div *ngIf="submitted && f.purDate.errors" class="invalid-feedback">
+                            <div *ngIf="f.purDate.errors.required">purchaseDate is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Subscription Plan</label>
+                        <select (change)="selectOption($event.target.value)" formControlName="subplan" class="form-control">  
+                            <option value="" selected disabled hidden>Choose Plan... </option>
+                            <option value="1">Monthly</option>
+                            <option value="2">Quarterly</option>
+                            <option value="3">Annual</option>  
+                            <option *ngFor="let plan of plansList">{{subplan}}</option>  
+                        </select>  
+                        <div *ngIf="f.subplan.touched && f.subplan.invalid" class="alert alert-danger">  
+                            <div *ngIf="f.subplan.errors.required">plan is required.</div>  
+                        </div>  
+                    </div>
+                    <button class="btn btn-primary" (click)="getSubscriptionRenewingDetails(purchaseDate,selectedPlan)" style="border: solid transparent;
+                    border-radius: 16px;
+                    border-width: 0 0 4px;
+                    box-sizing: border-box;
+                    color: #FFFFFF;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: din-round,sans-serif;">
+                        Get Expiry Details
+                    </button>
+                    <div class="form-group">
+                        <label for="username">Expiry Date</label>
+                        <input type="text" disabled = "isCalc" formControlName="expDate" class="form-control" [value]="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="dueDate">Due In Days :</label>
+                        <span></span>
+                        <input type="text" disabled = "isCalc" formControlName="expDate" class="form-control" [value]="dueDate">
+                    </div>
             <div class="form-group">
-                <label for="firstName">Date</label>
-                <input type="date" formControlName="firstName" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label for="lastName">Plan</label>
-                <input type="text" formControlName="lastName" class="form-control"  />
-                
-            </div>
-            <div class="form-group">
-                <label for="username">Expires on</label>
-                <input type="text" formControlName="username" class="form-control" />
-               
-            </div>
-            <div class="form-group">
-                <label for="password">Due Date:</label>
-                <input type="password" formControlName="password" class="form-control"  />
-               
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary" style="border: solid transparent;
+                <button class="btn btn-primary" (click)="onSubmit()" style="border: solid transparent;
                 border-radius: 16px;
                 border-width: 0 0 4px;
                 box-sizing: border-box;
@@ -45,5 +65,4 @@
                 </button>
             </div>
         </form>
-    </div>
 </div>
