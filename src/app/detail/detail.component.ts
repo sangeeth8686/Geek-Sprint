@@ -10,12 +10,26 @@ import { AccountService } from '@app/_services';
 export class DetailComponent implements OnInit {
 
   constructor(private accountService: AccountService, private route: ActivatedRoute,
-    private router: Router,) { }
+              private router: Router,) { }
  // tslint:disable-next-line: ban-types
  detailsfound: Boolean = false;
-  ngOnInit(): void {
-    this.detailsfound = false;
+ dataToDisplay: any;
+ dueDate: number;
+ expDate: any;
+ purDate: any;
+ subplan: string;
+
+ ngOnInit(): void {
+  if(this.accountService.data)
+  {
+    this.detailsfound = true;
+
+    this.dueDate = this.accountService.data.dueDate;
+    this.purDate = this.accountService.data.purDate;
+    this.expDate = this.accountService.data.expDate;
+    this.subplan = this.accountService.data.subplan;
   }
+}
 
   updateDetails()
   {

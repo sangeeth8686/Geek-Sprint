@@ -14,7 +14,8 @@ import { HomeComponent } from './home';;
 import { DetailComponent } from './detail/detail.component';
 import { UpdateDetailsComponent } from './update-details/update-details.component'
 import { DatePipe } from '@angular/common';
-
+// tslint:disable-next-line: no-unused-expression
+import { subDetails, User} from './_models';
 @NgModule({
     imports: [
         BrowserModule,
@@ -32,6 +33,8 @@ import { DatePipe } from '@angular/common';
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         DatePipe,
+        subDetails,
+        User,
         // provider used to create fake backend
         fakeBackendProvider
     ],

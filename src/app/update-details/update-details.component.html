@@ -13,9 +13,9 @@
                         <label for="lastName">Subscription Plan</label>
                         <select (change)="selectOption($event.target.value)" formControlName="subplan" class="form-control">  
                             <option value="" selected disabled hidden>Choose Plan... </option>
-                            <option value="1">Monthly</option>
-                            <option value="2">Quarterly</option>
-                            <option value="3">Annual</option>  
+                            <option>Monthly</option>
+                            <option>Quarterly</option>
+                            <option>Annual</option>  
                             <option *ngFor="let plan of plansList">{{subplan}}</option>  
                         </select>  
                         <div *ngIf="f.subplan.touched && f.subplan.invalid" class="alert alert-danger">  
@@ -34,12 +34,12 @@
                     </button>
                     <div class="form-group">
                         <label for="username">Expiry Date</label>
-                        <input type="text" disabled = "isCalc" formControlName="expDate" class="form-control" [value]="date">
+                        <input type="text" disabled formControlName="expDate" class="form-control" [value]="date">
                     </div>
                     <div class="form-group">
                         <label for="dueDate">Due In Days :</label>
                         <span></span>
-                        <input type="text" disabled = "isCalc" formControlName="expDate" class="form-control" [value]="dueDate">
+                        <input type="text" disabled formControlName="expDate" class="form-control" [value]="dueDate">
                     </div>
             <div class="form-group">
                 <button class="btn btn-primary" (click)="onSubmit()" style="border: solid transparent;
