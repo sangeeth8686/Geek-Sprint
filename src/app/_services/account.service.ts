@@ -6,12 +6,16 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
+import { subDetails } from '@app/_models';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
     private userSubject: BehaviorSubject<User>;
+    private subDetailSubject: BehaviorSubject<subDetails>;
     public user: Observable<User>;
-    public btnid:string;
+    public btnid: string;
+    public subdata: Observable<any>;
+    public data: any;
 
     constructor(
         private router: Router,
@@ -19,6 +23,8 @@ export class AccountService {
     ) {
         this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
         this.user = this.userSubject.asObservable();
+        this.subDetailSubject = new BehaviorSubject<subDetails>(JSON.parse(localStorage.getItem('subDetail')));
+        this.subdata = this.subDetailSubject.asObservable();
     }
 
     public get userValue(): User {
@@ -46,6 +52,10 @@ export class AccountService {
         return this.http.post(`${environment.apiUrl}/users/register`, user);
     }
 
+    subDetails1(subDetails:subDetails) {
+        return this.http.post(`${environment.apiUrl}/details/updateDetails`, subDetails);
+    }
+
     getAll() {
         return this.http.get<User[]>(`${environment.apiUrl}/users`);
     }
@@ -53,8 +63,6 @@ export class AccountService {
     getById(id: string) {
         return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
     }
-
-    
     update(id, params) {
         return this.http.put(`${environment.apiUrl}/users/${id}`, params)
             .pipe(map(x => {
@@ -80,5 +88,11 @@ export class AccountService {
                 }
                 return x;
             }));
+    }
+
+    saveData( subDetails: any)
+    {
+        this.data = subDetails;
+        return this.data;
     }
 }
